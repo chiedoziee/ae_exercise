@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: raw
+    database: learned-digit-300710
+    schema: raw
+    tables:
+      - name: customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+
+      - name: order_items
+
+      - name: orders
+        loaded_at_field: order_purchased_at_est
+        warn_after: {count: 6, period: hour}
+        error_after: {count: 12, period: hour}
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+          - name: order_status
+            tests:
+              - accepted_values:
+                  values:
+                    - created
+                    - shipped
+                    - approved
+                    - canceled
+                    - invoiced
+                    - delivered
+                    - processing
+                    - unavailable
+
+      - name: payments
+        columns:
+          - name: payment_type
+            tests:
+              - accepted_values:
+                  values:
+                    - credit_card
+                    - voucher
+                    - not_defined
+                    - debit_card
+                    - boleto
+
+      - name: products

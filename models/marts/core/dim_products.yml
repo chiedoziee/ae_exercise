@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: Information on Product Sales.
+    columns:
+
+      - name: product_id
+        description: "Primary Key - unique to each product"
+        tests:
+          - unique
+          - not_null
+      - name: product_category_name
+        description: "Name of product category"
+      - name: product_name_length
+        description: "Length of product name (number of characters)"
+      - name: product_description_length
+        description: "Length of product description (number of characters)"
+      - name: product_photos_count
+        description: "Number of Photos or product"
+      - name: product_weight_kg
+        description: "Weight of Product in kg"
+      - name: product_length_cm
+        description: "Length of Product in cm"
+      - name: product_height_cm
+        description: "Height of Product in cm"
+      - name: product_width_cm
+        description: "Width of Product in cm"
+      - name: product_volume_cubic_cm
+        description: "Volume of product in cubic meters"
+      - name: total_units_sold
+        description: "Quantity of products sold"
+      - name: total_revenue
+        description: "Total revenue made per product"
+      - name: is_top_10_product
+        description: "Is in the list of top 10 products sold based on units sold"
