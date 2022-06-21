@@ -9,7 +9,8 @@
     )
 
     , customer_orders as (
-        /* For retention, it would be important to have customer order sequence based on order_delivery_date */
+        /* Introducing first purchase and most recent purchase dates per customer
+        (For retention, it would be important to have customer order sequence based on order_delivery_date) */
       select distinct
         orders.customer_id
         , min(cast(orders.order_purchased_at_et as datetime)) as first_purchased_at_et
