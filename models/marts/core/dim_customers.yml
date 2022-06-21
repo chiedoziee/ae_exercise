@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Information on Customers' orders.
+    columns:
+
+      - name: customer_unique_id
+        description: "Primary key - Non unique to each customer. Unique key = 'customer_id' "
+        tests:
+          - unique
+          - not_null
+      - name: most_expensive_order_value
+        description: "Highest amount spent by the customer on an order"
+      - name: unique_customer_first_purchased_at_et
+        description: "First Purchase by customer (based on customer_unique_id)"
+      - name: unique_customer_most_recent_purchased_at_et
+        description: "Most Recent Purchase by customer (based on customer_unique_id)"
+      - name: number_of_orders
+        description: "Number of orders per customer"
+      - name: total_orders_value
+        description: "Total revenue from orders made"

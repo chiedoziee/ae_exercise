@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: Sales of order_items.
+    columns:
+
+      - name: order_item_id
+        description: "Primary Key - unique to each order_item"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign Key - unique to each order. Each order_id maps one_to_many to order_item_id"
+      - name: customer_id
+        description: "Foreign Key - unique to each customer. Each customer_id maps one_to_many to order_item_id"
+      - name: product_id
+        description: "Foreign Key - unique to each product. Each product_id maps one_to_many to order_item_id"
+      - name: seller_id
+        description: "Foreign Key - unique to each seller of the product"
+      - name: item_price
+        description: "Price of the item"
+      - name: freight_value
+        description: "Cost of delivery"
+      - name: order_status
+        description: "Status of the order"
+      - name: order_purchased_at_et
+        description: "Time of item purchase (Eastern Time)"
+      - name: order_delivered_customer_at_et
+        description: "Time of delivery to customer (Eastern Time)"
+      - name: order_revenue_total
+        description: "Total revenue per order"
+      - name: payment_installments_total
+        description: "Total installments during payment"
+      - name: payment_value_total
+        description: "Total value of payment"
+      - name: customer_zip_code_prefix
+        description: "Customer Zip Code"
+      - name: customer_city
+        description: "Customer City"
+      - name: customer_state
+        description: "Customer State"
+      - name: customer_first_purchased_at_et
+        description: "Customer's first purchase date"
+      - name: customer_most_recent_purchased_at_et
+        description: "Customer's most recent purchase date"
+      - name: days_to_deliver
+        description: "Number of days to deliver to customer"
+      - name: new_or_repeat_customer
+        description: "Is Customer's first order less than 90 days or is the customer a repeat customer?"
