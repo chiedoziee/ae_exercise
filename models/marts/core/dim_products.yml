@@ -33,4 +33,4 @@ models:
       - name: total_revenue
         description: "Total revenue made per product"
       - name: is_top_10_product
-        description: "Is in the list of top 10 products sold based on revenue made"
+        description: "Is in the list of top 10 products sold based on units sold"

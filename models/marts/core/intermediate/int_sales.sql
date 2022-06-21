@@ -25,8 +25,8 @@
         order_id
         , sum(payment_installments) as payment_installments_total
         , sum(payment_value) as payment_value_total
-        from payments
-        group by 1
+      from payments
+      group by 1
     )
 
 , final as (

@@ -10,7 +10,7 @@
     )
 
     , product_sales_details as (
-      select
+      select distinct
         products.product_id
         , coalesce(round((products.product_length_cm * products.product_height_cm * products.product_width_cm),2),0) as product_volume_cubic_cm
         , count (order_items.order_item_id) as total_units_sold
@@ -23,7 +23,7 @@
     , top_10_products_sold as (
       select distinct
         product_id
-        , total_revenue
+        , total_units_sold
       from product_sales_details
       order by 2 desc
       limit 10
@@ -43,7 +43,7 @@
       , product_sales_details.product_volume_cubic_cm
       , product_sales_details.total_units_sold
       , product_sales_details.total_revenue
-      , cast ((product_sales_details.product_id = top_10_products_sold.product_id) as int64) as is_top_10_product
+      , case when product_sales_details.product_id = top_10_products_sold.product_id then true end as is_top_10_product
 
     from products
     left join product_sales_details on products.product_id = product_sales_details.product_id
@@ -51,3 +51,4 @@
   )
 
 select * from final
+where is_top_10_product

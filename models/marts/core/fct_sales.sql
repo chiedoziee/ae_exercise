@@ -1,11 +1,11 @@
 
   with
     sales as (
-        select * from {{ ref('int_sales') }}
+      select * from {{ ref('int_sales') }}
     )
 
     , customer_orders as (
-        select * from {{ ref('int_customer_orders') }}
+      select * from {{ ref('int_customer_orders') }}
     )
 
 , final as (
