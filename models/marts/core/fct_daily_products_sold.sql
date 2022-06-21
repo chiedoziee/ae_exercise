@@ -25,7 +25,7 @@
     )
 
     , date_item_purchase_spine as (
-      /* Join Spree stock item properties on date spine starting with the first stock item created date */
+      /* Join sales properties on date spine starting with the first purchase date */
       select
         concat(date_spine.date_day,sales.product_id) as daily_product_id
         , date_spine.date_day
@@ -39,6 +39,7 @@
     )
 
   , final as (
+    /* Introducing sales metrics to the daily snapshot */
     select
       daily_product_id
       , date_item_purchase_spine.date_day

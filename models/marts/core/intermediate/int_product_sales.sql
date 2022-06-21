@@ -10,6 +10,8 @@
     )
 
     , product_sales_details as (
+      /* Calculating product volume in cm3, total number of units sold per product and total revenue per product 
+      (Unit was kept in cm at stg_products to maintain a uniform metric at stakeholder's request) */
       select distinct
         products.product_id
         , coalesce(round((products.product_length_cm * products.product_height_cm * products.product_width_cm),2),0) as product_volume_cubic_cm
@@ -21,6 +23,8 @@
     )
 
     , top_10_products_sold as (
+      /* Determine overall top 10 products sold based on number of units sold
+      (Top 10 products per month or year would be interesting) */
       select distinct
         product_id
         , total_units_sold

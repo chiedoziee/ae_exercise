@@ -21,6 +21,9 @@
     )
 
     , payment_details as (
+      /* Adding total installments and payment values for each order 
+      (May not be needed at order_item level)
+      */
       select
         order_id
         , sum(payment_installments) as payment_installments_total

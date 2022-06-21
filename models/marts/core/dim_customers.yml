@@ -6,7 +6,7 @@ models:
     columns:
 
       - name: customer_unique_id
-        description: "Primary key - Non unique to each customer. Unique key = 'customer_id' "
+        description: "Primary key - Non unique to each customer in stg_customers. Unique key = 'customer_id' "
         tests:
           - unique
           - not_null
